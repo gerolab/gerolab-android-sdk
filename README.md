@@ -26,4 +26,4 @@ SDK features:
 
 How to integrate SDK
 --
-Read [gero-lab-android-sdk-1.0-manual.pdf](manual/gero-lab-android-sdk-1.0-manual.pdf)
+Read [gero-lab-android-sdk-1.0-manual.md](manual/gero-lab-android-sdk-1.0-manual.md)
