@@ -145,7 +145,7 @@ All methods are synchronous - please run them off UI thread.
         }
 ```
 
-* [Download sample apk here](https://github.com/gerolab/gerolab-android-sdk/blob/master/manual/GeroLabSDKSample.apk)
+* [Download sample apk here](https://github.com/gerolab/gerolab-android-sdk/raw/master/manual/GeroLabSDKSample.apk)
 
 ![004.png](/img/004.png)![005.png](/img/005.png)
  
