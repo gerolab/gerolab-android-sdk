@@ -5,23 +5,23 @@ SDK location
 [https://github.com/gerolab/gerolab-android-sdk](https://github.com/gerolab/gerolab-android-sdk)
 SDK integration
 --
-This is an example of creating sample project using [Android Studio](http://developer.android.com/sdk/installing/studio.html). The complete sample is located here [GeroLabSDKSample](tree/master/samples/GeroLabSDKSample).
+This is an example of creating sample project using [Android Studio](http://developer.android.com/sdk/installing/studio.html). The complete sample is located here [GeroLabSDKSample](../tree/master/samples/GeroLabSDKSample).
 
 1. Create new Android Studio project project.
 
-![001.png](/manual/img/001.png)
+![001.png](/img/001.png)
 
-2. Copy [GeroLab-X.X.jar](tree/master/libs) to the /libs forder. /aidl files to the /src/main/aidl folder.
+2. Copy [GeroLab-X.X.jar](../tree/master/libs) to the /libs forder. /aidl files to the /src/main/aidl folder.
 
-![002.png](/manual/img/002.png)
+![002.png](/img/002.png)
 
 3. Modify build.gradle to compile external .jar and Google play services
 
-dependencies {
-      compile 'com.android.support:appcompat-v7:+'
-      compile 'com.google.android.gms:play-services:4.0.+'
-      compile files('libs/GeroSDK-1.0.jar')
-}
+    dependencies {
+        compile 'com.android.support:appcompat-v7:+'
+        compile 'com.google.android.gms:play-services:4.0.+'
+        compile files('libs/GeroSDK-1.0.jar')
+    }
 
 4. Modify AndroidManifest.xml
 4.1. Add required permissions
