@@ -1,0 +1,5 @@
+com.getgero.common.serverapi.data
+com.getgero.motionsdk.receiver
+com.getgero.motionsdk.service
+com.getgero.motionsdk.storage
+com.getgero.motionsdk.utils

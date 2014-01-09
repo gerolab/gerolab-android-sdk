@@ -1,0 +1,260 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+       tools:context="com.gerolab.sdksample.LoginActivity">
+
+    <!-- Progress -->
+    <LinearLayout
+        android:id="@+id/loading_status"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/loading_status_message"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:fontFamily="sans-serif-light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/login_progress_signing_in"/>
+    </LinearLayout>
+
+    <!-- Login form -->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            style="@style/LoginFormContainer"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/text_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/text_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:id="@+id/login_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/email"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/prompt_email"/>
+
+                <EditText
+                    android:id="@+id/password"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:inputType="textPassword"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeActionId="@+id/login"
+                    android:imeOptions="actionUnspecified"/>
+
+                <Button
+                    android:id="@+id/sign_in_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/action_sign_in_short"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    android:layout_gravity="right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/restore_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/email_restore"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/prompt_email"
+                    android:imeActionLabel="@string/action_restore"
+                    android:imeActionId="@+id/restore"
+                    android:imeOptions="actionUnspecified"/>
+
+                <Button
+                    android:id="@+id/restore_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/action_restore"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    android:layout_gravity="right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/register_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/email_register"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/prompt_email"/>
+
+                <EditText
+                    android:id="@+id/password_register"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:inputType="textPassword"/>
+
+                <EditText
+                    android:id="@+id/name_register"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_name"
+                    android:inputType="textPersonName"/>
+
+                <EditText
+                    android:id="@+id/birthday"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_birthday"
+                    android:inputType="date"/>
+
+                <Spinner
+                    android:id="@+id/gender"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/weight"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_weight"
+                    android:inputType="numberDecimal"/>
+
+                <EditText
+                    android:id="@+id/height"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_height"
+                    android:inputType="numberDecimal"
+                    android:imeActionLabel="@string/action_restore"
+                    android:imeActionId="@+id/register"
+                    android:imeOptions="actionUnspecified"/>
+
+                <Button
+                    android:id="@+id/register_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/action_register"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    android:layout_gravity="right"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/main_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/google_activity_checkbox"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkbox_use_google_activity"/>
+
+                <TextView
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_sensitivity"/>
+
+                <Spinner
+                    android:id="@+id/sensitivity"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/log_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_view_log"/>
+
+                    <Button
+                        android:id="@+id/logout_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_logout"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</merge>

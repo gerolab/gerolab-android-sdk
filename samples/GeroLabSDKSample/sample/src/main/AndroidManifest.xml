@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.gerolab.sdksample">
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <activity
+            android:name="com.gerolab.sdksample.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.gerolab.sdksample.StepsLogActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+
+        <service
+            android:name="com.getgero.motionsdk.service.GeroAccelerometerService"
+            android:exported="false"/>
+        <provider
+            android:name="com.getgero.motionsdk.storage.StepsProvider"
+            android:authorities="com.getgero.motionsdk.provider.Steps"
+            android:exported="false"/>
+        <receiver
+            android:name="com.getgero.motionsdk.receiver.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <data
+                    android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

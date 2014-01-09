@@ -1,0 +1,63 @@
+<resources>
+    
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_birthday">yyyy-MM-dd</string>
+    <string name="prompt_weight">Weight in gram</string>
+    <string name="prompt_height">Height in cm</string>
+
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_restore">Restore</string>
+    <string name="action_register">Register</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_view_log">View steps log</string>
+
+    <string name="checkbox_use_google_activity">Use Google Activity recognition</string>
+
+    <string name="label_sensitivity">Step detection sensitivity:</string>
+
+    <string name="action_start_service">Start data capture</string>
+    <string name="action_stop_service">Stop data capture</string>
+
+    <string name="login_progress_signing_in">Signing in&#8230;</string>
+    <string name="login_progress_restore">Restore password&#8230;</string>
+    <string name="login_progress_register">Register&#8230;</string>
+    <string name="login_progress_loading">Loading&#8230;</string>
+
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_email_not_registered">Email is not registered</string>
+    <string name="error_email_already_registered">Email is already registered</string>
+
+    <string name="text_steps">%s steps</string>
+
+    <string name="label_text1">unix timestamp (seconds): </string>
+    <string name="label_text2">steps count: </string>
+    <string name="label_text3">cal count: </string>
+    <string name="label_text4">distance (meters): </string>
+
+    <string name="label_calories_tip">1000 cal = 1 Kcal = 1 calorie</string>
+
+    <string name="label_log_total">%1$d steps; %2$.2f calories; %3$d meters</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="sensitivity">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+</resources>
