@@ -63,6 +63,7 @@ import com.google.android.gms.location.DetectedActivity;
  * - restore password
  * - view information
  */
+@SuppressWarnings("ALL")
 public class LoginActivity extends Activity {
 
     private static final String LOG_TAG = "[ LoginActivity ]";
@@ -180,8 +181,6 @@ public class LoginActivity extends Activity {
         switch (state) {
             case GeroAccelerometerService.STATE_SERVICE_STARTED:
                 return "STARTED";
-            case GeroAccelerometerService.STATE_SERVICE_PAUSED_CHARGING:
-                return "PAUSED_CHARGING";
             case GeroAccelerometerService.STATE_SERVICE_PAUSED_LOW_BATTERY:
                 return "PAUSED_LOW_BATTERY";
             case GeroAccelerometerService.STATE_SERVICE_PAUSED_AUTH_ERROR:
@@ -308,10 +307,16 @@ public class LoginActivity extends Activity {
                 R.array.sensitivity, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSensitivitySpinner.setAdapter(adapter);
-        findViewById(R.id.log_button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.log_step_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), StepsLogActivity.class));
+            }
+        });
+        findViewById(R.id.log_sleep_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SleepLogActivity.class));
             }
         });
         mHeightRegisterView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -777,6 +782,8 @@ public class LoginActivity extends Activity {
                     }
                 }
                 mSensitivitySpinner.setOnItemSelectedListener(mOnItemSelectedListener);
+
+                mGeroAccelerometerService.setMinimumSleepNotificationTime(SleepLogActivity.DEFAULT_SLEEP_DURATION);
             } catch (RemoteException e) {
                 Log.d(LOG_TAG, "onServiceConnected() [RemoteException]");
             }

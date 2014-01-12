@@ -241,10 +241,16 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/log_button"
+                        android:id="@+id/log_step_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/action_view_log"/>
+                        android:text="@string/action_view_step_log"/>
+
+                    <Button
+                        android:id="@+id/log_sleep_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_view_sleep_log"/>
 
                     <Button
                         android:id="@+id/logout_button"

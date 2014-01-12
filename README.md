@@ -23,7 +23,8 @@ SDK features:
 * Calculate calories burned
 * Calculate distance
 * Collect raw accelerometer data and upload to Gero cloud to conduct research
+* Sleep detection
 
 How to integrate SDK
 --
-Read [gero-lab-android-sdk-1.0-manual.md](manual/gero-lab-android-sdk-1.0-manual.md)
+Read [gero-lab-android-sdk-manual.md](manual/gero-lab-android-sdk-manual.md)

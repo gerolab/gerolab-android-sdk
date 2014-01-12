@@ -12,7 +12,8 @@
     <string name="action_restore">Restore</string>
     <string name="action_register">Register</string>
     <string name="action_logout">Logout</string>
-    <string name="action_view_log">View steps log</string>
+    <string name="action_view_step_log">Steps log</string>
+    <string name="action_view_sleep_log">Sleep log</string>
 
     <string name="checkbox_use_google_activity">Use Google Activity recognition</string>
 
@@ -43,6 +44,14 @@
     <string name="label_calories_tip">1000 cal = 1 Kcal = 1 calorie</string>
 
     <string name="label_log_total">%1$d steps; %2$.2f calories; %3$d meters</string>
+
+    <string name="label_sleep_notification">Log your sleep</string>
+    <string name="label_sleep_notification_content">Sleep time: %d minutes</string>
+
+    <string name="label_sleep_log">from %1$s, sleep time %2$d minutes</string>
+
+    <string name="label_sleep_edit_duration">Min. sleep time:</string>
+    <string name="label_sleep_night">Night only</string>
 
     <string-array name="gender">
         <item>Male</item>

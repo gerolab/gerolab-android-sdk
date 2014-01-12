@@ -69,4 +69,14 @@ interface IGeroAccelerometerService {
      * {@link GeroAccelerometerService.MODE_STEP_DETECTION_SIMPLE} or {@link GeroAccelerometerService.MODE_STEP_DETECTION_USE_GOOGLE_ACTIVITY}.
      */
     void setStepDetectionMode(int mode);
+
+    /**
+     * Returns minimum sleep notification time. Default is 30 minutes.
+     */
+    int getMinimumSleepNotificationTime();
+
+    /**
+     * Set minimum sleep notification time. Local broadcast {@link GeroAccelerometerService.ACTION_SIGNIFICANT_MOVEMENT_AFTER_SLEEP} will be sent.
+     */
+    void setMinimumSleepNotificationTime(int value);
 }

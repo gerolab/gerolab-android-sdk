@@ -33,5 +33,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.google.android.gms:play-services:4.0.+'
-    compile files('libs/GeroSDK-1.0.jar')
+    compile files('libs/GeroSDK-1.1.jar')
 }
