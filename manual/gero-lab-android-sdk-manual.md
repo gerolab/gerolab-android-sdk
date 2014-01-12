@@ -21,7 +21,7 @@ This is an example of creating sample project using [Android Studio](http://deve
     dependencies {
         compile 'com.android.support:appcompat-v7:+'
         compile 'com.google.android.gms:play-services:4.0.+'
-        compile files('libs/GeroSDK-1.0.jar')
+        compile files('libs/GeroSDK-1.1.jar')
     }
 ```
 
@@ -145,7 +145,32 @@ All methods are synchronous - please run them off UI thread.
         }
 ```
 
+Sleep detection
+---
+* You can detect sleep activity in your application. Gero Lab SDK has special column ``TableSteps.COLUMN_EVENTS_COUNT`` that indicates the number of activity events that occured in particular minute. If this value is zero and steps count is zero - there is probability that user is sleeping.
+* You can also register broadcast notification that SDK receives accelerometer activity after some period of "sleeping" time.
+
+```java
+    mGeroAccelerometerService.setMinimumSleepNotificationTime(SleepLogActivity.DEFAULT_SLEEP_DURATION);
+```
+
+The default value is 30 minutes.
+
+```xml
+    <receiver
+        android:name="com.gerolab.sdksample.SleepStateReceiver"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.getgero.motionsdk.service.ACTION_SIGNIFICANT_MOVEMENT_AFTER_SLEEP"/>
+        </intent-filter>
+    </receiver>
+```
+
+* There is a sample code how you can detect sleeping interval in your application [SleepLogActivity.java](https://github.com/gerolab/gerolab-android-sdk/blob/master/samples/GeroLabSDKSample/sample/src/main/java/com/gerolab/sdksample/SleepLogActivity.java)
+
+Sample APK
+---
 * [Download sample apk here](https://github.com/gerolab/gerolab-android-sdk/raw/master/manual/GeroLabSDKSample.apk)
 
-![004.png](/img/004.png)![005.png](/img/005.png)
+![004.png](/img/004.png)![005.png](/img/005.png)![006.png](/img/006.png)
  
