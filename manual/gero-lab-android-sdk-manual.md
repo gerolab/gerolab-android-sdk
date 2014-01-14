@@ -9,11 +9,11 @@ This is an example of creating sample project using [Android Studio](http://deve
 
 * Create new Android Studio project project.
 
-![001.png](/img/000.png)
+![001.png](https://raw.github.com/gerolab/gerolab-android-sdk/master/manual/img/000.png)
 
 * Copy [GeroLab-X.X.jar](https://github.com/gerolab/gerolab-android-sdk/tree/master/libs) to the /libs forder. /aidl files to the /src/main/aidl folder.
 
-![002.png](/img/001.png)
+![002.png](https://raw.github.com/gerolab/gerolab-android-sdk/master/manual/img/001.png)
 
 * Modify build.gradle to compile external .jar and Google play services
 
@@ -172,5 +172,5 @@ Sample APK
 ---
 * [Download sample apk here](https://github.com/gerolab/gerolab-android-sdk/raw/master/manual/GeroLabSDKSample.apk)
 
-![004.png](/img/004.png)![005.png](/img/005.png)![006.png](/img/006.png)
+![004.png](https://raw.github.com/gerolab/gerolab-android-sdk/master/manual/img/004.png)![005.png](https://raw.github.com/gerolab/gerolab-android-sdk/master/manual/img/005.png)![006.png](https://raw.github.com/gerolab/gerolab-android-sdk/master/manual/img/006.png)
  
