@@ -115,6 +115,13 @@ All methods are synchronous - please run them off UI thread.
         }
 ```
 
+Query steps per hour
+
+```java
+    cursor = db.rawQuery("SELECT _id, SUM(column_steps) FROM steps WHERE " + TableSteps.COLUMN_ID + " >= ? AND " +
+                            TableSteps.COLUMN_ID + " < ? GROUP BY strftime('%H', column_timestamp)", new String[]{String.valueOf(mStartTs), String.valueOf(mEndTs)});
+```
+
 * You can receive steps/calories/distance history from database via StepsProvider.
  * Steps are calculated via internal algorithm.
  * To query database - use cursor loader or more complex rawQuery.
