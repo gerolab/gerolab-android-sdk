@@ -125,8 +125,6 @@ Query steps per hour
 * You can receive steps/calories/distance history from database via StepsProvider.
  * Steps are calculated via internal algorithm.
  * To query database - use cursor loader or more complex rawQuery.
- * There are 2 accelerometer mode: "constant" and "walking only". You can use "walking only" mode to save phone battery power. In "walking only" mode sleep detection is not working.
- * In "walking only" mode you can additionally limit the maximum recording time per day to save more phone power.
 
 ```java
     @Override
@@ -152,6 +150,36 @@ Query steps per hour
             }
             return null;
         }
+```
+
+Power consumption
+---
+ * There are 2 accelerometer mode: "constant" and "walking only". You can use "walking only" mode to save phone battery power. 
+ * In "walking only" mode sleep detection is disabled.
+ * In "walking only" mode you can additionally limit the maximum recording time per day to save more phone power. Recording is paused until 00:00 next day after maximum limit is reached.
+
+```java
+    /**
+     * Returns accelerometer capture mode. In "walking only" mode sleep is not detected.
+     * {@link GeroAccelerometerService.MODE_ACCELEROMETER_CONSTANT} or {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY}.
+     */
+    int getAccelerometerCaptureMode();
+
+    /**
+     * Set accelerometer capture mode. In "walking only" mode sleep is not detected.
+     * {@link GeroAccelerometerService.MODE_ACCELEROMETER_CONSTANT} or {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY}.
+     */
+    void setAccelerometerCaptureMode(int mode);
+
+    /**
+     * Returns maximum record time (in hours) for {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY} mode.
+     */
+    int getMaximumRecordTime();
+
+    /**
+     * Set maximum record time (in hours) for {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY} mode.
+     */
+    void setMaximumRecordTime(int hours);
 ```
 
 Sleep detection
