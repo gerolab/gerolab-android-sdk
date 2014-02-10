@@ -98,12 +98,19 @@ public class StepsLogActivity extends FragmentActivity implements LoaderManager.
             // example of raw query to database
             ContentProviderClient client = getContentResolver().acquireContentProviderClient(StepsProvider.AUTHORITY);
             SQLiteDatabase db = ((StepsProvider) client.getLocalContentProvider()).getReadableDatabase();
-            Cursor cursor = db.rawQuery("SELECT SUM(" + TableSteps.COLUMN_CALORIES + "), SUM(" + TableSteps.COLUMN_STEPS +
-                    "), SUM(" + TableSteps.COLUMN_DISTANCE + ") FROM " + TableSteps.TABLE_NAME, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                mTotalCal = cursor.getInt(0);
-                mTotalSteps = cursor.getInt(1);
-                mTotalDistance = cursor.getInt(2);
+            Cursor cursor = null;
+            try {
+                cursor = db.rawQuery("SELECT SUM(" + TableSteps.COLUMN_CALORIES + "), SUM(" + TableSteps.COLUMN_STEPS +
+                        "), SUM(" + TableSteps.COLUMN_DISTANCE + ") FROM " + TableSteps.TABLE_NAME, null);
+                if (cursor != null && cursor.moveToFirst()) {
+                    mTotalCal = cursor.getInt(0);
+                    mTotalSteps = cursor.getInt(1);
+                    mTotalDistance = cursor.getInt(2);
+                }
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
             }
             return null;
         }

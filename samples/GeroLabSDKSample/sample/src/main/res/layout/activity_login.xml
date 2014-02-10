@@ -5,6 +5,8 @@
     <!-- Progress -->
     <LinearLayout
         android:id="@+id/loading_status"
+        android:background="@android:color/white"
+        android:clickable="true"
         android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -214,11 +216,24 @@
                 android:orientation="vertical">
 
                 <CheckBox
-                    android:id="@+id/google_activity_checkbox"
+                    android:id="@+id/walking_only_checkbox"
                     android:layout_marginTop="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/checkbox_use_google_activity"/>
+                    android:text="@string/checkbox_record_walking_only"/>
+
+                <TextView
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_limit_recording_time"/>
+
+                <Spinner
+                    android:id="@+id/recording_time"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     android:layout_marginTop="16dp"

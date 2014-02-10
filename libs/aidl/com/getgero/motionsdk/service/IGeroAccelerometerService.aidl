@@ -60,17 +60,6 @@ interface IGeroAccelerometerService {
     void setStepSensitivity(float value);
 
     /**
-     * Returns step detection mode.
-     */
-    int getStepDetectionMode();
-
-    /**
-     * Set step detection mode.
-     * {@link GeroAccelerometerService.MODE_STEP_DETECTION_SIMPLE} or {@link GeroAccelerometerService.MODE_STEP_DETECTION_USE_GOOGLE_ACTIVITY}.
-     */
-    void setStepDetectionMode(int mode);
-
-    /**
      * Returns minimum sleep notification time. Default is 30 minutes.
      */
     int getMinimumSleepNotificationTime();
@@ -79,4 +68,26 @@ interface IGeroAccelerometerService {
      * Set minimum sleep notification time. Local broadcast {@link GeroAccelerometerService.ACTION_SIGNIFICANT_MOVEMENT_AFTER_SLEEP} will be sent.
      */
     void setMinimumSleepNotificationTime(int value);
+
+    /**
+     * Returns accelerometer capture mode. In "walking only" mode sleep is not detected.
+     * {@link GeroAccelerometerService.MODE_ACCELEROMETER_CONSTANT} or {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY}.
+     */
+    int getAccelerometerCaptureMode();
+
+    /**
+     * Set accelerometer capture mode. In "walking only" mode sleep is not detected.
+     * {@link GeroAccelerometerService.MODE_ACCELEROMETER_CONSTANT} or {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY}.
+     */
+    void setAccelerometerCaptureMode(int mode);
+
+    /**
+     * Returns maximum record time (in hours) for {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY} mode.
+     */
+    int getMaximumRecordTime();
+
+    /**
+     * Set maximum record time (in hours) for {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY} mode.
+     */
+    void setMaximumRecordTime(int hours);
 }

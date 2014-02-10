@@ -116,8 +116,10 @@ All methods are synchronous - please run them off UI thread.
 ```
 
 * You can receive steps/calories/distance history from database via StepsProvider.
- * Steps are calculated via internal algorithm. You can improve walking probability detection by using Google Play activity recognition service. Use void setStepDetectionMode(int mode) method in AIDL interface to set mode.
+ * Steps are calculated via internal algorithm.
  * To query database - use cursor loader or more complex rawQuery.
+ * There are 2 accelerometer mode: "constant" and "walking only". You can use "walking only" mode to save phone battery power. In "walking only" mode sleep detection is not working.
+ * In "walking only" mode you can additionally limit the maximum recording time per day to save more phone power.
 
 ```java
     @Override

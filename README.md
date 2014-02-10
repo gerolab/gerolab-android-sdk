@@ -28,3 +28,16 @@ SDK features:
 How to integrate SDK
 --
 Read [gero-lab-android-sdk-manual.md](manual/gero-lab-android-sdk-manual.md)
+
+Changes
+--
+v.1.2
+Added "walking only" mode for power optimization
+Removed option to turn off Google Play Services
+Step detection optimizations
+
+v.1.1
+Added sleep detection
+
+v.1.0
+First version

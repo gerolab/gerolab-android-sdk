@@ -80,6 +80,14 @@ public class LoginActivity extends Activity {
             StepUtils.SENSITIVITY_9
     };
 
+    private static int[] RECORD_TIME_ARRAY = {
+            0,
+            1,
+            3,
+            6,
+            12
+    };
+
     // async tasks
     private ServerTask mServerTask = null;
 
@@ -109,8 +117,9 @@ public class LoginActivity extends Activity {
     private View mRegisterLayout;
 
     // Main screen UI (after success login)
-    private CheckBox mCheckBox;
+    private CheckBox mRecordOnlyWalkingCheckBox;
     private Spinner mSensitivitySpinner;
+    private Spinner mRecordingTimeSpinner;
     private View mMainLayout;
 
     // base status fields UI
@@ -132,11 +141,27 @@ public class LoginActivity extends Activity {
     private int mActivityType = DetectedActivity.UNKNOWN;
 
     // spinner listener to change step detection sensitivity
-    private AdapterView.OnItemSelectedListener mOnItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+    private AdapterView.OnItemSelectedListener mOnSensitivityItemSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             try {
                 mGeroAccelerometerService.setStepSensitivity(SENSITIVITY_ARRAY[position]);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    private AdapterView.OnItemSelectedListener mOnRecordTimeItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            try {
+                mGeroAccelerometerService.setMaximumRecordTime(RECORD_TIME_ARRAY[position]);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -185,6 +210,8 @@ public class LoginActivity extends Activity {
                 return "PAUSED_LOW_BATTERY";
             case GeroAccelerometerService.STATE_SERVICE_PAUSED_AUTH_ERROR:
                 return "PAUSED_AUTH_ERROR";
+            case GeroAccelerometerService.STATE_SERVICE_PAUSED_NOT_WALKING:
+                return "PAUSED_NOT_WALKING";
             default:
             case GeroAccelerometerService.STATE_SERVICE_STOPPED:
                 return "STOPPED";
@@ -291,22 +318,30 @@ public class LoginActivity extends Activity {
                 new LogoutTask().execute();
             }
         });
-        mCheckBox = (CheckBox) findViewById(R.id.google_activity_checkbox);
-        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mRecordOnlyWalkingCheckBox = (CheckBox) findViewById(R.id.walking_only_checkbox);
+        mRecordOnlyWalkingCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mRecordingTimeSpinner.setEnabled(isChecked);
                 try {
-                    mGeroAccelerometerService.setStepDetectionMode(isChecked ? GeroAccelerometerService.MODE_STEP_DETECTION_USE_GOOGLE_ACTIVITY : GeroAccelerometerService.MODE_STEP_DETECTION_SIMPLE);
+                    mGeroAccelerometerService.setAccelerometerCaptureMode(isChecked ? GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY : GeroAccelerometerService.MODE_ACCELEROMETER_CONSTANT);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
             }
         });
+        mRecordingTimeSpinner = (Spinner) findViewById(R.id.recording_time);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
+                R.array.recording_time, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRecordingTimeSpinner.setAdapter(adapter1);
+
         mSensitivitySpinner = (Spinner) findViewById(R.id.sensitivity);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.sensitivity, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSensitivitySpinner.setAdapter(adapter);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSensitivitySpinner.setAdapter(adapter2);
+
         findViewById(R.id.log_step_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -771,7 +806,8 @@ public class LoginActivity extends Activity {
                 mServiceState = mGeroAccelerometerService.getServiceState();
                 mActivityType = mGeroAccelerometerService.getLastActivityType();
                 updateServiceStatusUI();
-                mCheckBox.setChecked(mGeroAccelerometerService.getStepDetectionMode() == GeroAccelerometerService.MODE_STEP_DETECTION_USE_GOOGLE_ACTIVITY);
+                boolean walkingOnly = mGeroAccelerometerService.getAccelerometerCaptureMode() == GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY;
+                mRecordOnlyWalkingCheckBox.setChecked(walkingOnly);
 
                 mSensitivitySpinner.setOnItemSelectedListener(null);
                 float sensitivity = mGeroAccelerometerService.getStepSensitivity();
@@ -781,7 +817,18 @@ public class LoginActivity extends Activity {
                         break;
                     }
                 }
-                mSensitivitySpinner.setOnItemSelectedListener(mOnItemSelectedListener);
+                mSensitivitySpinner.setOnItemSelectedListener(mOnSensitivityItemSelectedListener);
+                //
+                mRecordingTimeSpinner.setOnItemSelectedListener(null);
+                int time =  mGeroAccelerometerService.getMaximumRecordTime();
+                for (int i = 0; i < RECORD_TIME_ARRAY.length; i++) {
+                    if (time == RECORD_TIME_ARRAY[i]) {
+                        mRecordingTimeSpinner.setSelection(i);
+                        break;
+                    }
+                }
+                mRecordingTimeSpinner.setOnItemSelectedListener(mOnRecordTimeItemSelectedListener);
+                mRecordingTimeSpinner.setEnabled(walkingOnly);
 
                 mGeroAccelerometerService.setMinimumSleepNotificationTime(SleepLogActivity.DEFAULT_SLEEP_DURATION);
             } catch (RemoteException e) {

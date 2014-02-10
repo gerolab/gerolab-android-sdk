@@ -15,9 +15,11 @@
     <string name="action_view_step_log">Steps log</string>
     <string name="action_view_sleep_log">Sleep log</string>
 
-    <string name="checkbox_use_google_activity">Use Google Activity recognition</string>
+    <string name="checkbox_record_walking_only">Record only when walking</string>
 
     <string name="label_sensitivity">Step detection sensitivity:</string>
+
+    <string name="label_limit_recording_time">Limit recording time:</string>
 
     <string name="action_start_service">Start data capture</string>
     <string name="action_stop_service">Stop data capture</string>
@@ -68,5 +70,13 @@
         <item>7</item>
         <item>8</item>
         <item>9</item>
+    </string-array>
+
+    <string-array name="recording_time">
+        <item>no limit</item>
+        <item>1h per day</item>
+        <item>3h per day</item>
+        <item>6h per day</item>
+        <item>12h per day</item>
     </string-array>
 </resources>
