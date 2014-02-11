@@ -31,6 +31,9 @@ Read [gero-lab-android-sdk-manual.md](manual/gero-lab-android-sdk-manual.md)
 
 Changes
 --
+**v.1.3**
+* Added setHz() and getHz() methods for custom frequency setting
+
 **v.1.2**
 
 * Added "walking only" mode for power optimization
