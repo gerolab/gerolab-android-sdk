@@ -90,4 +90,15 @@ interface IGeroAccelerometerService {
      * Set maximum record time (in hours) for {@link GeroAccelerometerService.MODE_ACCELEROMETER_WALKING_ONLY} mode.
      */
     void setMaximumRecordTime(int hours);
+
+    /**
+     * Get Hz accelerometer setting. 30Hz is default
+     */
+    int getHz();
+
+    /**
+     * Set Hz accelerometer setting. 1 to 30Hz.
+     * Call this before login.
+     */
+    void setHz(int hz);
 }

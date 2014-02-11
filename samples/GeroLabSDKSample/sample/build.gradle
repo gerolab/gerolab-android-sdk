@@ -14,13 +14,13 @@ repositories {
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.1"
+    buildToolsVersion '19.0.1'
 
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 19
         versionCode 1
-        versionName "1.0"
+        versionName "1.3"
     }
     buildTypes {
         release {
@@ -31,7 +31,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:+'
+    compile group: 'com.android.support', name: 'support-v4', version: '19.0.+'
     compile 'com.google.android.gms:play-services:4.1.32'
-    compile files('libs/GeroSDK-1.2.jar')
+    compile files('libs/GeroSDK-1.3.jar')
 }
